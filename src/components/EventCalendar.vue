@@ -14,6 +14,7 @@ const searchItem = () => {
 };
 </script>
 <template>
+
   <v-text-field
     v-model="search"
     outlined
@@ -28,6 +29,7 @@ const searchItem = () => {
     @input="searchItem"
   ></v-text-field>
   <FullCalendar :options="calendarOptions" />
+
 </template>
 
 <style>

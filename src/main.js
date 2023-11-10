@@ -16,6 +16,9 @@ import router from "./router/index.js";
 
 const app = createApp(App);
 
-registerPlugins(app);
+
+
+registerPlugins(app)
+
 app.use(router);
 app.mount("#app");
