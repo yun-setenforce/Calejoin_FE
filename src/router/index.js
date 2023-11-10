@@ -1,6 +1,7 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
 import JoinShowTimes from "../components/JoinShowTimes.vue";
+import DirectMessage from "../components/DirectMessage.vue";
 
 
 const routes = [
@@ -13,6 +14,9 @@ const routes = [
       },
       {
         path: 'showtime', name: 'JoinShowTimes', component: () => import(/* webpackChunkName: "home" */ '@/components/JoinShowTimes.vue'),
+      },
+      {
+        path: 'dm', name: 'DirectMessage', component: () => import(/* webpackChunkName: "home" */ '@/components/DirectMessage.vue')
       },
     ],
   },
