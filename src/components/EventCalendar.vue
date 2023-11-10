@@ -24,6 +24,7 @@ export default {
 };
 </script>
 <template>
+    <!-- 검색창 -->
     <v-text-field
       v-model="search"
       outlined
