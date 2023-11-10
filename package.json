@@ -45,7 +45,10 @@
     "@vitejs/plugin-vue": "^4.0.0",
     "eslint": "^8.37.0",
     "eslint-plugin-vue": "^9.3.0",
+<<<<<<< HEAD
+=======
     "font-awesome": "^4.7.0",
+>>>>>>> cb16213d58495f64b182d3fbab873bf0231f4554
     "prettier": "^3.0.3",
     "sass": "^1.60.0",
     "unplugin-fonts": "^1.0.3",
