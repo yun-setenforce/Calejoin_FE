@@ -1,7 +1,5 @@
 // Composables
-import { createRouter, createWebHistory } from 'vue-router'
-// import JoinShowTimes from "../components/JoinShowTimes.vue";
-
+import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
@@ -14,18 +12,47 @@ const routes = [
     component: () => import('@/layouts/default/Default.vue'),
     children: [
       {
-        path: '', name: 'Home', component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
+        path: "",
+        name: "Home",
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+          import(/* webpackChunkName: "home" */ "@/views/Home.vue"),
       },
       {
-        path: 'showtime', name: 'JoinShowTimes', component: () => import(/* webpackChunkName: "home" */ '@/components/JoinShowTimes.vue'),
+        path: "PubFeed",
+        name: "Public_Feed",
+        component: () => import("@/views/Public_Feed.vue"),
+      },
+      {
+        path: "showtime",
+        name: "JoinShowTimes",
+        component: () =>
+          import(
+            /* webpackChunkName: "home" */ "@/components/JoinShowTimes.vue"
+          ),
+      },
+      {
+        path: "scheduleStatus",
+        name: "scheduleStatus",
+        component: () => import("@/components/scheduleStatus.vue"),
+      },
+      {
+        path: "partyCreate",
+        name: "partyCreate",
+        component: () => import("@/components/partyCreate.vue"),
+      },
+      {
+        path: 'dm', name: 'DirectMessage', component: () => import(/* webpackChunkName: "home" */ '@/components/DirectMessage.vue')
       },
     ],
   },
-]
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-})
+});
 
-export default router
+export default router;
