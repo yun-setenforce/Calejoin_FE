@@ -14,6 +14,9 @@ import { createApp } from "vue";
 import { registerPlugins } from "@/plugins";
 import router from "./router/index.js";
 
+// Webfont
+import "@/assets/fonts.css"
+
 const app = createApp(App);
 
 
