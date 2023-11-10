@@ -1,45 +1,35 @@
-<script>
-import FullCalendar from '@fullcalendar/vue3'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import interactionPlugin from '@fullcalendar/interaction'
+<script setup>
+import FullCalendar from "@fullcalendar/vue3";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import interactionPlugin from "@fullcalendar/interaction";
 
-export default {
-  components: {
-    FullCalendar
-  },
-  data() {
-    return {
-      calendarOptions: {
-        plugins: [ dayGridPlugin, interactionPlugin ],
-        initialView: 'dayGridMonth'
-      },
-      search: "",
-    }
-  },
-  methods: {
-    searchItem() {
-      console.log("Searched for:", this.search);
-    },
-  },
+const calendarOptions = {
+  plugins: [dayGridPlugin, interactionPlugin],
+  initialView: "dayGridMonth",
+};
+const search = "";
+
+const searchItem = () => {
+  console.log("Searched for:", this.search);
 };
 </script>
 <template>
-    <!-- 검색창 -->
-    <v-text-field
-      v-model="search"
-      outlined
-      clearable
-      rounded
-      variant="solo"
-      theme="light"
-      prepend-inner-icon="mdi-magnify"
-      placeholder="Search...."
-      class="no-padding"
-      style="float: right; clear: both; width: 30%; margin-top:10px;"
-      @input="searchItem"
 
-    ></v-text-field>
-    <FullCalendar :options="calendarOptions" />
+  <v-text-field
+    v-model="search"
+    outlined
+    clearable
+    rounded
+    variant="solo"
+    theme="light"
+    prepend-inner-icon="mdi-magnify"
+    placeholder="Search...."
+    class="no-padding"
+    style="float: right; clear: both; width: 30%; margin-top: 10px"
+    @input="searchItem"
+  ></v-text-field>
+  <FullCalendar :options="calendarOptions" />
+
 </template>
 
 <style>
@@ -60,24 +50,19 @@ export default {
   background-color: royalblue;
 }
 .fc .fc-button {
-  border : none;
+  border: none;
 }
 .fc .fc-button-primary:disabled {
   background-color: royalblue;
-
 }
 .fc-view-harness {
   margin-top: 50px;
   margin-bottom: 50px;
 }
-.fc-toolbar-chunk{
+.fc-toolbar-chunk {
 }
 .v-text-field input.v-field__input {
   --v-field-input-padding-top: 1px;
   --v-field-input-padding-bottom: none;
-
 }
-
-
-
 </style>
