@@ -1,9 +1,14 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
-import JoinShowTimes from "../components/JoinShowTimes.vue";
+// import JoinShowTimes from "../components/JoinShowTimes.vue";
 
 
 const routes = [
+  {
+    path: '/login',
+    name: "login",
+    component: () => import('@/components/login/Login.vue'),
+  },
   {
     path: '/',
     component: () => import('@/layouts/default/Default.vue'),
