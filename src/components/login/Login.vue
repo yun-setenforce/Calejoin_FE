@@ -15,6 +15,7 @@
 
 <script setup>
 
+
 function getImageUrl() {
   const i= Math.floor(Math.random()*7);
   console.log(i);
@@ -33,18 +34,26 @@ const bgImg = getImageUrl();
     width:100vw;
   }
 
+
 }
 
 @media (min-width: 768px) {
 
+  #loginPg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
   #loginForm{
     border-radius: 75px;
-    border: 2px solid #fff;
+    //border: 2px solid #fff;
     box-sizing: content-box;
     width: 450px;
-    height: 700px;
-    margin: 0 auto;
+    height: 450px;
+    box-shadow: 0px 5px 5px  rgba(0,0,0,0.2);
   }
+
   .loginTitle{
     border-radius: 75px 75px 0 0;
     width: 450px;
@@ -82,9 +91,9 @@ const bgImg = getImageUrl();
   color:white;
 }
 .loginTitle > h4{
+  font-family: 'Moirai One';
   font-size: 63px;
   letter-spacing: 6.3px;
-  font-family: Lato;
   text-align: center;
   line-height: 120px;
 }
