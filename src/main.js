@@ -15,6 +15,7 @@ import { registerPlugins } from '@/plugins'
 import router from "./router/index.js";
 
 
+
 const app = createApp(App)
 
 registerPlugins(app)
