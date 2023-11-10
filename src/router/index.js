@@ -1,12 +1,17 @@
 // Composables
-import { createRouter, createWebHistory } from "vue-router";
-import JoinShowTimes from "../components/JoinShowTimes.vue";
-import DirectMessage from "../components/DirectMessage.vue";
+import { createRouter, createWebHistory } from 'vue-router'
+// import JoinShowTimes from "../components/JoinShowTimes.vue";
+
 
 const routes = [
   {
-    path: "/",
-    component: () => import("@/layouts/default/Default.vue"),
+    path: '/login',
+    name: "login",
+    component: () => import('@/components/login/Login.vue'),
+  },
+  {
+    path: '/',
+    component: () => import('@/layouts/default/Default.vue'),
     children: [
       {
         path: "",
