@@ -23,7 +23,7 @@ const routes = [
       {
         path: "PubFeed",
         name: "Public_Feed",
-        component: () => import("@/views/Public_Feed.vue"),
+        component: () => import("@/components/Feed/Public_Feed.vue"),
       },
       {
         path: "showtime",
@@ -45,6 +45,22 @@ const routes = [
       },
       {
         path: 'dm', name: 'DirectMessage', component: () => import(/* webpackChunkName: "home" */ '@/components/DirectMessage.vue')
+      },
+      {
+        path: "UserFeed",
+        name: "User_Feed",
+        component: () =>
+          import(
+            /* webpackChunkName: "home" */ "@/components/Feed/User_Feed.vue"
+            ),
+      },
+      {
+        path: "UserFeedDetail",
+        name: "User_Feed_Detail",
+        component: () =>
+          import(
+            /* webpackChunkName: "home" */ "@/components/Feed/User_Feed_Detail.vue"
+            ),
       },
     ],
   },
