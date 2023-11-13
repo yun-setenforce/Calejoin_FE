@@ -46,6 +46,9 @@ const routes = [
       {
         path: 'dm', name: 'DirectMessage', component: () => import(/* webpackChunkName: "home" */ '@/components/DirectMessage.vue')
       },
+      {
+        path: 'dmView', name: 'DirectMessageView', component: () => import(/* webpackChunkName: "home" */ '@/components/DirectMessageView.vue')
+      },
     ],
   },
 ];
