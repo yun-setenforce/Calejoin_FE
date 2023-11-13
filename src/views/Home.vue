@@ -7,7 +7,7 @@ import Profile from "@/components/Profile.vue";
 <template>
   <v-app :style="{ background: $vuetify.theme.themes.light.colors.primary }">
     <v-main>
-      <v-container class="px-15 mt-n1" fluid>
+      <v-container class="px-15 mt-n1" fluid="">
         <v-row justify-end>
           <v-col cols="12" md="4">
             <profile/>

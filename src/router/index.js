@@ -47,6 +47,7 @@ const routes = [
         path: 'dm', name: 'DirectMessage', component: () => import(/* webpackChunkName: "home" */ '@/components/DirectMessage.vue')
       },
       {
+<<<<<<< HEAD
         path: "UserFeed",
         name: "User_Feed",
         component: () =>
@@ -61,6 +62,12 @@ const routes = [
           import(
             /* webpackChunkName: "home" */ "@/components/Feed/User_Feed_Detail.vue"
             ),
+=======
+        path: 'dmView', name: 'DirectMessageView', component: () => import(/* webpackChunkName: "home" */ '@/components/DirectMessageView.vue')
+      },
+      {
+        path: 'PlanWrite', name: 'PlanWrite', component: () => import(/* webpackChunkName: "home" */ '@/components/PlanWrite.vue')
+>>>>>>> 39b7c7e327a2fe976c52d5b531a03b6c0dbbb582
       },
     ],
   },
