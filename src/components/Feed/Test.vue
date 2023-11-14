@@ -1,6 +1,6 @@
 <template>
   <v-app :style="{ background: $vuetify.theme.themes.dark.background }">
-    <v-container class="chat" fluid>
+    <v-container fluid>
       <v-row>
         <v-col cols="12" sm="3" class="border">
           <v-app-bar flat color="rgba(0,0,0,0)">
@@ -34,8 +34,8 @@
               active-class="blue lighten-4"
               multiple
             >
-              <template v-for="(item, index) in items" :key="item.title">
-                <v-list-item>
+              <template v-for="(item, index) in items">
+                <v-list-item :key="item.title">
                   <v-badge
                     bordered
                     bottom
@@ -50,9 +50,13 @@
                   </v-badge>
                   <template>
                     <v-list-item-content>
-                      <v-list-item-title>{{ item.title }}</v-list-item-title>
+                      <v-list-item-title
+                        v-text="item.title"
+                      ></v-list-item-title>
 
-                      <v-list-item-subtitle>{{ item }}</v-list-item-subtitle>
+                      <v-list-item-subtitle
+                        v-text="item.subtitle"
+                      ></v-list-item-subtitle>
                     </v-list-item-content>
                   </template>
                 </v-list-item>
@@ -304,10 +308,12 @@
                   <v-list-item-group>
                     <v-list-item v-for="(item, i) in files" :key="i">
                       <v-list-item-icon>
-                        <v-icon color="green">{{ item.icon }}</v-icon>
+                        <v-icon v-text="item.icon" color="green"></v-icon>
                       </v-list-item-icon>
                       <v-list-item-content>
-                        <v-list-item-title>{{ item.text }}</v-list-item-title>
+                        <v-list-item-title
+                          v-text="item.text"
+                        ></v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
                   </v-list-item-group>
@@ -409,9 +415,5 @@ export default {
 <style scoped>
 .border {
   border-right: 1px solid grey;
-}
-
-::v-deep(.v-main) {
-  background-color: #0d47a1;
 }
 </style>

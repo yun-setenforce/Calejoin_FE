@@ -3,13 +3,13 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
-    path: '/login',
+    path: "/login",
     name: "login",
-    component: () => import('@/components/login/Login.vue'),
+    component: () => import("@/components/login/Login.vue"),
   },
   {
-    path: '/',
-    component: () => import('@/layouts/default/Default.vue'),
+    path: "/",
+    component: () => import("@/layouts/default/Default.vue"),
     children: [
       {
         path: "",
@@ -44,16 +44,20 @@ const routes = [
         component: () => import("@/components/partyCreate.vue"),
       },
       {
-        path: 'dm', name: 'DirectMessage', component: () => import(/* webpackChunkName: "home" */ '@/components/DirectMessage.vue')
+        path: "dm",
+        name: "DirectMessage",
+        component: () =>
+          import(
+            /* webpackChunkName: "home" */ "@/components/DirectMessage.vue"
+          ),
       },
       {
-<<<<<<< HEAD
         path: "UserFeed",
         name: "User_Feed",
         component: () =>
           import(
             /* webpackChunkName: "home" */ "@/components/Feed/User_Feed.vue"
-            ),
+          ),
       },
       {
         path: "UserFeedDetail",
@@ -61,13 +65,28 @@ const routes = [
         component: () =>
           import(
             /* webpackChunkName: "home" */ "@/components/Feed/User_Feed_Detail.vue"
-            ),
-=======
-        path: 'dmView', name: 'DirectMessageView', component: () => import(/* webpackChunkName: "home" */ '@/components/DirectMessageView.vue')
+          ),
+      },
+
+      {
+        path: "dmView",
+        name: "DirectMessageView",
+        component: () =>
+          import(
+            /* webpackChunkName: "home" */ "@/components/DirectMessageView.vue"
+          ),
       },
       {
-        path: 'PlanWrite', name: 'PlanWrite', component: () => import(/* webpackChunkName: "home" */ '@/components/PlanWrite.vue')
->>>>>>> 39b7c7e327a2fe976c52d5b531a03b6c0dbbb582
+        path: "PlanWrite",
+        name: "PlanWrite",
+        component: () =>
+          import(/* webpackChunkName: "home" */ "@/components/PlanWrite.vue"),
+      },
+      {
+        path: "Test",
+        name: "Test",
+        component: () =>
+          import(/* webpackChunkName: "home" */ "@/components/Feed/Test.vue"),
       },
     ],
   },
