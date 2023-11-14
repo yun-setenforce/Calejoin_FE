@@ -81,21 +81,51 @@
               <v-card-title>태그 목록</v-card-title>
               <div class="px-4">
                 <v-chip-group v-model="selection">
-                  <v-chip># 초콜릿</v-chip>
-                  <v-chip># 제과제빵</v-chip>
-                  <v-chip># 달다달아</v-chip>
-                  <v-chip># 숩다 수워</v-chip>
+                  <v-chip  size="small"># 초콜릿</v-chip>
+                  <v-chip  size="small"># 제과제빵</v-chip>
+                  <v-chip size="small"># 달다달아</v-chip>
+                  <v-chip size="small"># 숩다 수워</v-chip>
                 </v-chip-group>
               </div>
-              <v-card-actions>
-                <v-btn
-                  color="deep-purple-lighten-2"
-                  variant="text"
-                  @click="reserve"
-                >
-                  Reserve
-                </v-btn>
-              </v-card-actions>
+
+              <!-- 댓글창 시작 -->
+              <v-list lines="two">
+                <v-infinite-scroll :height="300" :items="items" :onLoad="load">
+                <template v-for="(item, index) in items">
+                  <div
+                    :class="['pa-2', index % 2 === 0 ? 'bg-grey-lighten-2' : '']">
+                  <v-list-subheader
+                    v-if="item.header"
+                    :key="item.header"
+                    inset
+                  >
+                    {{ item.header }}
+                  </v-list-subheader>
+
+                  <v-divider
+                    v-else-if="item.divider"
+                    :key="index"
+                    inset
+                  ></v-divider>
+
+                  <v-list-item
+                    v-else
+                    :key="item.title"
+                    :prepend-avatar="item.avatar"
+                    ripple
+                  >
+                    <template v-slot:title>
+                      <div v-html="item.title"></div>
+                    </template>
+
+                    <template v-slot:subtitle>
+                      <div v-html="item.subtitle"></div>
+                    </template>
+                  </v-list-item>
+                  </div>
+                </template>
+                </v-infinite-scroll>
+              </v-list>
             </div>
           </v-card>
         </div>
@@ -168,6 +198,58 @@ export default {
   data: () => ({
     loading: false,
     selection: 1,
+    items: [
+
+      { divider: true },
+      {
+        avatar: 'https://picsum.photos/250/300?image=660',
+        title: 'Meeting @ Noon',
+        subtitle: `<span class="font-weight-bold">Spike Lee</span> &mdash; I'll be in your neighborhood`,
+      },
+      {
+        avatar: 'https://picsum.photos/250/300?image=821',
+        title: 'Summer BBQ <span class="text-grey-lighten-1"></span>',
+        subtitle: '<span class="font-weight-bold">to Operations support</span> &mdash; Wish I could come.',
+      },
+      {
+        avatar: 'https://picsum.photos/250/300?image=783',
+        title: 'Yes yes',
+        subtitle: '<span class="font-weight-bold">Bella</span> &mdash; Do you have Paris recommendations',
+      },
+      {
+        header: 'Yesterday',
+      },
+      { divider: true },
+      {
+        avatar: 'https://picsum.photos/250/300?image=1006',
+        title: 'Dinner tonight?',
+        subtitle: '<span class="font-weight-bold">LaToya</span> &mdash; Do you want to hang out?',
+      },
+      {
+        avatar: 'https://picsum.photos/250/300?image=146',
+        title: 'So long',
+        subtitle: '<span class="font-weight-bold">Nancy</span> &mdash; Do you see what time it is?',
+      },
+      {
+        header: 'Last Week',
+      },
+      { divider: true },
+      {
+        avatar: 'https://picsum.photos/250/300?image=1008',
+        title: 'Breakfast?',
+        subtitle: '<span class="font-weight-bold">LaToya</span> &mdash; Do you want to hang out?',
+      },
+      {
+        avatar: 'https://picsum.photos/250/300?image=839',
+        title: 'Winter Porridge <span class="text-grey-lighten-1"></span>',
+        subtitle: '<span class="font-weight-bold">cc: Daniel</span> &mdash; Tell me more...',
+      },
+      {
+        avatar: 'https://picsum.photos/250/300?image=145',
+        title: 'Oui oui',
+        subtitle: '<span class="font-weight-bold">Nancy</span> &mdash; Do you see what time it is?',
+      },
+    ],
   }),
 
   methods: {
@@ -189,8 +271,32 @@ export default {
 
       setTimeout(() => (this.loading = false), 2000);
     },
+
+    /*스크롤 관련 메서드 start*/
+    methods: {
+      async api () {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve(Array.from({ length: 10 }, (k, v) => v + this.items.at(-1) + 1))
+          }, 1000)
+        })
+      },
+      async load ({ done }) {
+        // Perform API call
+        const res = await this.api()
+
+        this.items.push(...res)
+
+        done('ok')
+      },
+    }/*스크롤 관련 메서드 end*/,
   },
 };
+
+
+
+
+
 </script>
 
 <style>
