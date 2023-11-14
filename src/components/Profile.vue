@@ -98,7 +98,7 @@ const toggleCard2 = () => {
       :path="mdiPencilPlusPath"
       style="color: grey"
     ></svg-icon>
-    <router-link to="/newplan">새 일정 추가</router-link>&nbsp;
+    <router-link to="/PlanWrite">새 일정 추가</router-link>&nbsp;
   </div>
 </template>
 
