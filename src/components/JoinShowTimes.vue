@@ -14,7 +14,6 @@ export default {
 
 <template>
   <v-app :style="{ background: $vuetify.theme.themes.light.colors.primary }">
-    <Sidebar />
     <v-main>
       <v-container class="px-15 mt-n1" fluid>
         <v-row justify-end>

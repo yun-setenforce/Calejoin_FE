@@ -44,6 +44,11 @@ const routes = [
         component: () => import("@/components/partyCreate.vue"),
       },
       {
+        path: "partyModify",
+        name: "partyModify",
+        component: () => import("@/components/partyModify.vue"),
+      },
+      {
         path: 'dm', name: 'DirectMessage', component: () => import(/* webpackChunkName: "home" */ '@/components/DirectMessage.vue')
       },
       {

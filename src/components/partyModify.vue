@@ -4,7 +4,7 @@ import EventCalendar from "@/components/EventCalendar.vue";
 import Sidebar from "@/components/SideBare.vue";
 
 export default {
-  name: "partyCreate",
+  name: "partyModify",
   components: {
     Sidebar,
     Profile,
@@ -23,7 +23,7 @@ export default {
             <h3 class="maintit">Show Time</h3>
 
             <!-- miniTitle -->
-            <h3 class="mintit">파티 모집하기</h3>
+            <h3 class="mintit">파티 수정하기</h3>
             <!-- party Create Form -->
             <form>
               <h4>일정제목</h4>
@@ -37,7 +37,7 @@ export default {
               </v-col>
               <h4>참석자</h4>
               <v-col cols="6"
-              style="display: inline-flex;">
+              style="display: inline-flex">
                 <v-autocomplete
                   v-model="values"
                   :items="items"
@@ -66,7 +66,7 @@ export default {
                 text-color="white"
                 prepend-icon="mdi-account-circle"
                 :model-value="true"
-              >용가리
+              >드래곤
               </v-chip>
               <v-chip
                 class="ma-2"
@@ -75,9 +75,10 @@ export default {
                 text-color="white"
                 prepend-icon="mdi-account-circle"
                 :model-value="true"
-              >드가자
+              >드래곤
               </v-chip>
               </div>
+
               <h4>일수</h4>
               <v-col cols="3">
                 <v-autocomplete
@@ -105,8 +106,8 @@ export default {
               <h4>메모</h4>
               <v-textarea clearable label="Label" variant="outlined"></v-textarea>
               <div id="AllBtn">
-                <v-btn class="btnCreate" variant="outlined"> 파티등록 </v-btn>
-                <v-btn class="btnCancel" variant="outlined"> 돌아가기 </v-btn>
+                <v-btn class="btnModi" variant="outlined"> 파티수정 </v-btn>
+                <v-btn class="btnCancel" variant="outlined"> 취소하기 </v-btn>
               </div>
 
             </form>
@@ -139,7 +140,7 @@ form {
   float: right;
 }
 
-.btnCreate {
+.btnModi {
   background-color: #2185D0;
   color: white;
 }
@@ -147,14 +148,6 @@ form {
 .btnCancel {
   background-color: #DB2828;
   color: white;
-}
-
-#startSpan {
-  margin-right: 15px;
-}
-
-#endSpan {
-  margin-left: 15px;
 }
 
 .friChip {
