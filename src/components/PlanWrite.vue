@@ -43,6 +43,7 @@ watch(isChecked, (value) => {
   if (value) {
     openModal(); // 체크박스가 체크되면 모달 열기
   } else {
+
     closeModal(); // 체크박스가 해제되면 모달 닫기
   }
 });
@@ -56,6 +57,12 @@ const openModal = () => {
 const closeModal = () => {
   modalOpen.value = false;
 };
+
+const cancle = () => {
+  modalOpen.value = false;
+  isChecked.value = false;
+};
+
 
 const daySelect = () => {
   showDatePicker.value = true;
@@ -136,8 +143,8 @@ const dayNone = () => {
                   </form>
                 </v-card-text>
                 <v-card-actions>
-                  <v-btn @click="closeModal">취소하기</v-btn>
-                  <input type="submit" style="margin-left: 190px" value="추가하기">
+                  <v-btn @click="cancle">취소하기</v-btn>
+                  <input @click="closeModal" type="submit" style="margin-left: 190px" value="추가하기">
                 </v-card-actions>
                 </form>
               </v-card>
