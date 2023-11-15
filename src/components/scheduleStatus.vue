@@ -16,7 +16,6 @@ export default {
 <template>
   <v-app :style="{ background: $vuetify.theme.themes.light.colors.primary }">
     <!-- header -->
-    <Sidebar />
     <v-main>
       <v-container class="px-15 mt-n1" fluid>
         <v-row justify-end>
@@ -32,6 +31,7 @@ export default {
             <!-- miniTitle -->
             <h3 class="mintit">[일정 제목] 파티 일정 현황</h3>
             <!-- schedule List -->
+            <div>
             <v-row align="center" justify="center">
               <v-col cols="12">
                 <v-card
@@ -42,11 +42,45 @@ export default {
                   prepend-icon="mdi-account"
                   append-icon="mdi-check"
                 >
-                  <v-card-text>일정 내용</v-card-text>
+                  <v-card-text>드가자 내용</v-card-text>
                   <v-btn id="confbtn" variant="outlined"> 확정하기 </v-btn>
                 </v-card>
               </v-col>
             </v-row>
+
+            <v-row align="center" justify="center">
+              <v-col cols="12">
+                <v-card
+                  class="mx-auto"
+                  max-width="800px"
+                  title="10/17 18:00 - 10/17 22:00"
+                  subtitle="n명의 참석자를 제외하고 가능합니다."
+                  prepend-icon="mdi-account"
+                  append-icon="mdi-check"
+                >
+                  <v-card-text>드래곤 내용</v-card-text>
+                  <v-btn id="confbtn" variant="outlined"> 확정하기 </v-btn>
+                </v-card>
+              </v-col>
+            </v-row>
+
+            <v-row align="center" justify="center">
+              <v-col cols="12">
+                <v-card
+                  class="mx-auto"
+                  max-width="800px"
+                  title="01/01 18:00 - 01/01 22:00"
+                  subtitle="n명의 참석자를 제외하고 가능합니다."
+                  prepend-icon="mdi-account"
+                  append-icon="mdi-check"
+                >
+                  <v-card-text>용가리 내용</v-card-text>
+                  <v-btn id="confbtn" variant="outlined"> 확정하기 </v-btn>
+                </v-card>
+              </v-col>
+            </v-row>
+
+            </div>
           </v-col>
         </v-row>
       </v-container>

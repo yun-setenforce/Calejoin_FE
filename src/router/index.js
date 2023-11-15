@@ -66,8 +66,10 @@ const routes = [
           import(
             /* webpackChunkName: "home" */ "@/components/Feed/User_Feed_Detail.vue"
           ),
+        path: "partyModify",
+        name: "partyModify",
+        component: () => import("@/components/partyModify.vue"),
       },
-
       {
         path: "dmView",
         name: "DirectMessageView",
