@@ -44,10 +44,16 @@ const routes = [
         component: () => import("@/components/partyCreate.vue"),
       },
       {
-        path: 'dm', name: 'DirectMessage', component: () => import(/* webpackChunkName: "home" */ '@/components/DirectMessage.vue')
+        path: 'DM', name: 'DirectMessage', component: () => import(/* webpackChunkName: "home" */ '@/components/DirectMessage.vue')
       },
       {
-        path: 'dmView', name: 'DirectMessageView', component: () => import(/* webpackChunkName: "home" */ '@/components/DirectMessageView.vue')
+        path: 'Alert', name: 'Notifications', component: () => import(/* webpackChunkName: "home" */ '@/components/Notifications.vue')
+      },
+      {
+        path: 'Notice', name: 'Notice', component: () => import(/* webpackChunkName: "home" */ '@/components/Notice.vue')
+      },
+      {
+        path: 'MySetting', name: 'MySetting', component: () => import(/* webpackChunkName: "home" */ '@/components/MySetting.vue')
       },
       {
         path: 'PlanWrite', name: 'PlanWrite', component: () => import(/* webpackChunkName: "home" */ '@/components/PlanWrite.vue')
