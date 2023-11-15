@@ -82,12 +82,6 @@ const routes = [
         component: () =>
           import(/* webpackChunkName: "home" */ "@/components/PlanWrite.vue"),
       },
-      {
-        path: "Test",
-        name: "Test",
-        component: () =>
-          import(/* webpackChunkName: "home" */ "@/components/Feed/Test.vue"),
-      },
     ],
   },
 ];

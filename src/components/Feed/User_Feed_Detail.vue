@@ -9,21 +9,19 @@
             style="
               display: grid;
               margin-left: 15%;
-              max-height: 700px;
+              max-height: 717px;
               max-width: 100%;
               width: auto;
               height: auto;
               margin-top: 10%;
             "
           >
-            <!--    <v-card-text class="text-h5 py-2">
-            "Turns out semicolon-less style is easier and safer in TS because most
-            gotcha edge cases are type invalid as well."
-          </v-card-text>-->
             <div>
               <v-img
                 cover
-                height="500"
+                max-height="800px"
+                height="100%"
+                width="100%"
                 src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
               ></v-img>
             </div>
@@ -64,68 +62,153 @@
                   indeterminate
                 ></v-progress-linear>
               </template>
+              <v-divider class="mx-4 mb-1"></v-divider>
+
+              <!-- modal창 start -->
+              <v-row justify="center" style="float: right">
+                <v-dialog v-model="dialog" persistent width="1024">
+                  <template v-slot:activator="{ props }">
+                    <v-btn variant="plain" v-bind="props"> 신고하기 </v-btn>
+                  </template>
+                  <v-card>
+                    <v-card-title>
+                      <span class="text-h5">신고하기</span>
+                    </v-card-title>
+                    <v-card-text>
+                      <v-container>
+                        <v-row>
+                          <v-col cols="12">
+                            <v-text-field
+                              label="신고 대상"
+                              required
+                            ></v-text-field>
+                          </v-col>
+                          <v-col cols="12" sm="12">
+                            <v-select
+                              :items="[
+                                '음란성 게시물',
+                                '광고/도배성 게시물',
+                                '욕설/차별/부적절한 언어',
+                                '불법적 정보 포함',
+                                '불쾌한 표현이 포함',
+                                '저작권 침해',
+                                '기타',
+                              ]"
+                              label="신고 종류"
+                            ></v-select>
+                          </v-col>
+                          <v-col cols="12">
+                            <v-textarea label="신고 사유" required></v-textarea>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                      <small
+                        >허위 사실을 기재시 활동을 제지 당할 수 있으니 허위성
+                        신고를 자제해 주시기 바랍니다.</small
+                      >
+                    </v-card-text>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn
+                        color="blue-darken-1"
+                        variant="text"
+                        @click="dialog = false"
+                      >
+                        Close
+                      </v-btn>
+                      <v-btn
+                        color="blue-darken-1"
+                        variant="text"
+                        @click="dialog = false"
+                      >
+                        Save
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
+              </v-row>
+
+              <!-- modal창 end -->
 
               <v-card-item>
                 <v-card-title>일정 제목</v-card-title>
-                <!--      <v-card-subtitle>
-              <span class="me-1">Local Favorite</span>
-
-              <v-icon color="error" icon="mdi-fire-circle" size="small"></v-icon>
-            </v-card-subtitle>-->
               </v-card-item>
-              <!-- 태그 목록 -->
               <v-card-text>
-                <v-row align="center" class="mx-0"> </v-row>
+                <v-row align="center" class="mx-0">초코 빵 굽기 </v-row>
               </v-card-text>
               <v-divider class="mx-4 mb-1"></v-divider>
+              <v-card-item>
+                <v-card-title>내용</v-card-title>
+              </v-card-item>
+              <v-card-text>
+                <v-row
+                  align="center"
+                  class="mx-0"
+                  style="max-height: 40px; min-height: 40px"
+                >
+                  Delicious
+                </v-row>
+              </v-card-text>
+              <v-divider class="mx-4 mb-1"></v-divider>
+              <!-- 태그 목록 -->
               <v-card-title>태그 목록</v-card-title>
               <div class="px-4">
                 <v-chip-group v-model="selection">
-                  <v-chip  size="small"># 초콜릿</v-chip>
-                  <v-chip  size="small"># 제과제빵</v-chip>
+                  <v-chip size="small"># 초콜릿</v-chip>
+                  <v-chip size="small"># 제과제빵</v-chip>
                   <v-chip size="small"># 달다달아</v-chip>
                   <v-chip size="small"># 숩다 수워</v-chip>
                 </v-chip-group>
               </div>
 
               <!-- 댓글창 시작 -->
-              <v-list lines="two">
-                <v-infinite-scroll :height="300" :items="items" :onLoad="load">
-                <template v-for="(item, index) in items">
-                  <div
-                    :class="['pa-2', index % 2 === 0 ? 'bg-grey-lighten-2' : '']">
-                  <v-list-subheader
-                    v-if="item.header"
-                    :key="item.header"
-                    inset
-                  >
-                    {{ item.header }}
-                  </v-list-subheader>
+              <v-list lines="two" max-height="380">
+                <v-infinite-scroll
+                  :height="190"
+                  :items="items"
+                  :onLoad="load"
+                  class="scroll"
+                >
+                  <div style="max-height: 300px">
+                    <template v-for="(item, index) in items">
+                      <v-list-subheader
+                        v-if="item.header"
+                        :key="item.header"
+                        inset
+                      >
+                        {{ item.header }}
+                      </v-list-subheader>
 
-                  <v-divider
-                    v-else-if="item.divider"
-                    :key="index"
-                    inset
-                  ></v-divider>
+                      <v-divider
+                        v-else-if="item.divider"
+                        :key="index"
+                        inset
+                      ></v-divider>
 
-                  <v-list-item
-                    v-else
-                    :key="item.title"
-                    :prepend-avatar="item.avatar"
-                    ripple
-                  >
-                    <template v-slot:title>
-                      <div v-html="item.title"></div>
+                      <v-list-item
+                        v-else
+                        :key="item.title"
+                        :prepend-avatar="item.avatar"
+                        ripple
+                      >
+                        <template v-slot:title>
+                          <div v-html="item.title"></div>
+                        </template>
+
+                        <template v-slot:subtitle>
+                          <div v-html="item.subtitle"></div>
+                        </template>
+                      </v-list-item>
                     </template>
-
-                    <template v-slot:subtitle>
-                      <div v-html="item.subtitle"></div>
-                    </template>
-                  </v-list-item>
                   </div>
-                </template>
                 </v-infinite-scroll>
               </v-list>
+              <v-text-field
+                clearable
+                label="댓글 작성하기"
+                variant="solo-filled"
+                style="width: 100%"
+              ></v-text-field>
             </div>
           </v-card>
         </div>
@@ -196,58 +279,65 @@
 import { mdiAccount, mdiDelete, mdiPencil, mdiShareVariant } from "@mdi/js";
 export default {
   data: () => ({
+    dialog: false,
     loading: false,
     selection: 1,
     items: [
-
       { divider: true },
       {
-        avatar: 'https://picsum.photos/250/300?image=660',
-        title: 'Meeting @ Noon',
+        avatar: "https://picsum.photos/250/300?image=660",
+        title: "Meeting @ Noon",
         subtitle: `<span class="font-weight-bold">Spike Lee</span> &mdash; I'll be in your neighborhood`,
       },
       {
-        avatar: 'https://picsum.photos/250/300?image=821',
+        avatar: "https://picsum.photos/250/300?image=821",
         title: 'Summer BBQ <span class="text-grey-lighten-1"></span>',
-        subtitle: '<span class="font-weight-bold">to Operations support</span> &mdash; Wish I could come.',
+        subtitle:
+          '<span class="font-weight-bold">to Operations support</span> &mdash; Wish I could come.',
       },
       {
-        avatar: 'https://picsum.photos/250/300?image=783',
-        title: 'Yes yes',
-        subtitle: '<span class="font-weight-bold">Bella</span> &mdash; Do you have Paris recommendations',
+        avatar: "https://picsum.photos/250/300?image=783",
+        title: "Yes yes",
+        subtitle:
+          '<span class="font-weight-bold">Bella</span> &mdash; Do you have Paris recommendations',
       },
       {
-        header: 'Yesterday',
-      },
-      { divider: true },
-      {
-        avatar: 'https://picsum.photos/250/300?image=1006',
-        title: 'Dinner tonight?',
-        subtitle: '<span class="font-weight-bold">LaToya</span> &mdash; Do you want to hang out?',
-      },
-      {
-        avatar: 'https://picsum.photos/250/300?image=146',
-        title: 'So long',
-        subtitle: '<span class="font-weight-bold">Nancy</span> &mdash; Do you see what time it is?',
-      },
-      {
-        header: 'Last Week',
+        header: "Yesterday",
       },
       { divider: true },
       {
-        avatar: 'https://picsum.photos/250/300?image=1008',
-        title: 'Breakfast?',
-        subtitle: '<span class="font-weight-bold">LaToya</span> &mdash; Do you want to hang out?',
+        avatar: "https://picsum.photos/250/300?image=1006",
+        title: "Dinner tonight?",
+        subtitle:
+          '<span class="font-weight-bold">LaToya</span> &mdash; Do you want to hang out?',
       },
       {
-        avatar: 'https://picsum.photos/250/300?image=839',
+        avatar: "https://picsum.photos/250/300?image=146",
+        title: "So long",
+        subtitle:
+          '<span class="font-weight-bold">Nancy</span> &mdash; Do you see what time it is?',
+      },
+      {
+        header: "Last Week",
+      },
+      { divider: true },
+      {
+        avatar: "https://picsum.photos/250/300?image=1008",
+        title: "Breakfast?",
+        subtitle:
+          '<span class="font-weight-bold">LaToya</span> &mdash; Do you want to hang out?',
+      },
+      {
+        avatar: "https://picsum.photos/250/300?image=839",
         title: 'Winter Porridge <span class="text-grey-lighten-1"></span>',
-        subtitle: '<span class="font-weight-bold">cc: Daniel</span> &mdash; Tell me more...',
+        subtitle:
+          '<span class="font-weight-bold">cc: Daniel</span> &mdash; Tell me more...',
       },
       {
-        avatar: 'https://picsum.photos/250/300?image=145',
-        title: 'Oui oui',
-        subtitle: '<span class="font-weight-bold">Nancy</span> &mdash; Do you see what time it is?',
+        avatar: "https://picsum.photos/250/300?image=145",
+        title: "Oui oui",
+        subtitle:
+          '<span class="font-weight-bold">Nancy</span> &mdash; Do you see what time it is?',
       },
     ],
   }),
@@ -274,29 +364,26 @@ export default {
 
     /*스크롤 관련 메서드 start*/
     methods: {
-      async api () {
-        return new Promise(resolve => {
+      async api() {
+        return new Promise((resolve) => {
           setTimeout(() => {
-            resolve(Array.from({ length: 10 }, (k, v) => v + this.items.at(-1) + 1))
-          }, 1000)
-        })
+            resolve(
+              Array.from({ length: 10 }, (k, v) => v + this.items.at(-1) + 1),
+            );
+          }, 1000);
+        });
       },
-      async load ({ done }) {
+      async load({ done }) {
         // Perform API call
-        const res = await this.api()
+        const res = await this.api();
 
-        this.items.push(...res)
+        this.items.push(...res);
 
-        done('ok')
+        done("ok");
       },
-    }/*스크롤 관련 메서드 end*/,
+    } /*스크롤 관련 메서드 end*/,
   },
 };
-
-
-
-
-
 </script>
 
 <style>
@@ -310,6 +397,17 @@ export default {
   display: grid;
   grid-template-columns: 70% 30%;
   grid-template-rows: 100% 0;
+}
+
+.v-input__control {
+  width: 100% !important;
+  min-width: 250px !important;
+  position: relative;
+  margin-top: 3.5%;
+}
+
+.v-list.v-theme--light.v-list--density-default.v-list--two-line::-webkit-scrollbar {
+  display: none;
 }
 /*. {
   display: grid;
@@ -330,6 +428,10 @@ export default {
   width: 300px;
   height: 400px;
   align-self: center;
+}
+.my-12 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .v-input__control {
