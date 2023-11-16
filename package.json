@@ -28,6 +28,7 @@
     "vue": "^3.2.0",
     "vue-chartjs": "^5.2.0",
     "vue-router": "^4.0.0",
+    "vue3-icon": "^2.1.0",
     "vuetify": "^3.0.0"
   },
   "eslintConfig": {
