@@ -65,9 +65,7 @@ const routes = [
         component: () =>
           import(
             /* webpackChunkName: "home" */ "@/components/Feed/User_Feed_Detail.vue"
-            ),
-      },
-      {
+          ),
         path: "partyModify",
         name: "partyModify",
         component: () => import("@/components/partyModify.vue"),
