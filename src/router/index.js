@@ -52,12 +52,22 @@ const routes = [
           ),
       },
       {
+        path: 'bell', name: 'Notifications', component: () => import(/* webpackChunkName: "home" */ '@/components/Notifications.vue')
+      },
+      {
+        path: 'notice', name: 'Notice', component: () => import(/* webpackChunkName: "home" */ '@/components/Notice.vue')
+      },
+      {
+        path: 'cog', name: 'MySetting', component: () => import(/* webpackChunkName: "home" */ '@/components/MySetting.vue')
+      },
+      {
         path: "UserFeed",
         name: "User_Feed",
         component: () =>
           import(
             /* webpackChunkName: "home" */ "@/components/Feed/User_Feed.vue"
           ),
+
       },
       {
         path: "UserFeedDetail",
@@ -65,18 +75,12 @@ const routes = [
         component: () =>
           import(
             /* webpackChunkName: "home" */ "@/components/Feed/User_Feed_Detail.vue"
-          ),
+          )
+      },
+      {
         path: "partyModify",
         name: "partyModify",
         component: () => import("@/components/partyModify.vue"),
-      },
-      {
-        path: "dmView",
-        name: "DirectMessageView",
-        component: () =>
-          import(
-            /* webpackChunkName: "home" */ "@/components/DirectMessageView.vue"
-          ),
       },
       {
         path: "PlanWrite",
