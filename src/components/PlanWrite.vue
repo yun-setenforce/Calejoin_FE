@@ -1,6 +1,6 @@
 <script setup>
 
-import {ref, watch} from "vue";
+import {reactive, ref, watch} from "vue";
 import router from "@/router";
 
 const showDatePicker = ref(false);
@@ -12,6 +12,10 @@ const categoryModalOpen = ref(false);
 
 const isChecked = ref(false);
 const modalOpen = ref(false);
+
+
+
+
 const repeatData = ref({
   repeatCycle: "",
   monday: false,
@@ -38,8 +42,24 @@ const repeatData = ref({
 const returnHome = () => {
   router.push("/");
 };
-const register = () => {
-  /*console.log(plan);
+
+/*const Sdate = reactive({
+  startDate : '',
+  startTime : '',
+});*/
+/*const Edate = reactive({
+  endDate : '',
+  endTime : '',
+})*/
+
+/*const register = () => {y
+  const combinedStartDateTime = `${Sdate.startDate} ${Sdate.startTime}`;
+  const combinedEndDateTime = `${Edate.endDate} ${Edate.endTime}`;
+  const plan = {
+    combinedStartDateTime: combinedStartDateTime,
+    combinedEndDateTime: combinedEndDateTime,
+  };
+  console.log(plan);
   axios
     .post("http://localhost:8080/Ch10/user1", plan)
     .then((response) => {
@@ -48,8 +68,8 @@ const register = () => {
     })
     .catch((err) => {
       console.log(err);
-    });*/
-};
+    });
+};*/
 const handleSubmit = () => {
   console.log("폼 데이터:", repeatData.value);
   /*console.log(user);
@@ -110,7 +130,7 @@ const closeModal = () => {
   modalOpen.value = false;
 };
 
-const cancle = () => {
+const cancel = () => {
   modalOpen.value = false;
   isChecked.value = false;
 };
@@ -129,6 +149,7 @@ const BallOff = ()=> {
 const dayNone = () => {
   showDatePicker.value = false;
 };
+
 
 /*//친구리스트 정의
 const selectedFriend = ref('');
@@ -188,11 +209,11 @@ const addSelectedFriend = () => {
             </v-dialog>
           <p class="smallTitle">일시</p>
           <div>
-            <input class="inputStyle" type="date" name="start"/>
-            <input class="inputStyle" type="time" name="start"/>
+            <input v-model="startDate" class="inputStyle" type="date" name="start"/>
+            <input v-model="startTime" class="inputStyle" type="time" name="start"/>
             <span style="font-weight: bold; font-size: 20px">~</span>
-            <input class="inputLeftStyle" type="date" name="end"/>
-            <input class="inputLeftStyle" type="time" name="end"/>
+            <input v-model="endDate" class="inputLeftStyle" type="date" name="end"/>
+            <input v-model="endTime" class="inputLeftStyle" type="time" name="end"/>
             <v-checkbox style="float: right; margin-top: 10px" v-model="isChecked" label="반복"></v-checkbox>
             <v-dialog v-model="modalOpen" max-width="350px">
               <v-card>
@@ -239,7 +260,7 @@ const addSelectedFriend = () => {
                     </div>
                   </v-card-text>
                   <v-card-actions>
-                    <v-btn @click="cancle">취소하기</v-btn>
+                    <v-btn @click="cancel">취소하기</v-btn>
                     <input @click="closeModal" type="submit" style="margin-left: 190px" value="추가하기">
                   </v-card-actions>
                   </form>
