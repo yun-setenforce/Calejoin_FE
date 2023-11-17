@@ -3,13 +3,13 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
-    path: '/login',
+    path: "/login",
     name: "login",
-    component: () => import('@/components/login/Login.vue'),
+    component: () => import("@/components/login/Login.vue"),
   },
   {
-    path: '/',
-    component: () => import('@/layouts/default/Default.vue'),
+    path: "/",
+    component: () => import("@/layouts/default/Default.vue"),
     children: [
       {
         path: "",
@@ -23,7 +23,7 @@ const routes = [
       {
         path: "PubFeed",
         name: "Public_Feed",
-        component: () => import("@/views/Public_Feed.vue"),
+        component: () => import("@/components/Feed/Public_Feed.vue"),
       },
       {
         path: "showtime",
@@ -44,18 +44,49 @@ const routes = [
         component: () => import("@/components/partyCreate.vue"),
       },
       {
+        path: "dm",
+        name: "DirectMessage",
+        component: () =>
+          import(
+            /* webpackChunkName: "home" */ "@/components/DirectMessage.vue"
+          ),
+      },
+      {
+        path: 'bell', name: 'Notifications', component: () => import(/* webpackChunkName: "home" */ '@/components/Notifications.vue')
+      },
+      {
+        path: 'notice', name: 'Notice', component: () => import(/* webpackChunkName: "home" */ '@/components/Notice.vue')
+      },
+      {
+        path: 'cog', name: 'MySetting', component: () => import(/* webpackChunkName: "home" */ '@/components/MySetting.vue')
+      },
+      {
+        path: "UserFeed",
+        name: "User_Feed",
+        component: () =>
+          import(
+            /* webpackChunkName: "home" */ "@/components/Feed/User_Feed.vue"
+          ),
+
+      },
+      {
+        path: "UserFeedDetail",
+        name: "User_Feed_Detail",
+        component: () =>
+          import(
+            /* webpackChunkName: "home" */ "@/components/Feed/User_Feed_Detail.vue"
+          )
+      },
+      {
         path: "partyModify",
         name: "partyModify",
         component: () => import("@/components/partyModify.vue"),
       },
       {
-        path: 'dm', name: 'DirectMessage', component: () => import(/* webpackChunkName: "home" */ '@/components/DirectMessage.vue')
-      },
-      {
-        path: 'dmView', name: 'DirectMessageView', component: () => import(/* webpackChunkName: "home" */ '@/components/DirectMessageView.vue')
-      },
-      {
-        path: 'PlanWrite', name: 'PlanWrite', component: () => import(/* webpackChunkName: "home" */ '@/components/PlanWrite.vue')
+        path: "PlanWrite",
+        name: "PlanWrite",
+        component: () =>
+          import(/* webpackChunkName: "home" */ "@/components/PlanWrite.vue"),
       },
     ],
   },
