@@ -49,6 +49,7 @@ export default {
                   <v-btn class="plusFri" density="compact" icon="mdi-plus"></v-btn>
                 </v-col>
               </v-col>
+              <!-- 친구 추가시 리스트 밑에 추가되는 칩 -->
               <div class="friChip">
               <v-chip
                 class="ma-2"
@@ -91,12 +92,14 @@ export default {
               </v-col>
               <h4>일시</h4>
               <div class="set-date">
+                <!-- 날짜 추가 -->
                 <span id="startSpan">시작일<input type="date" name="start"/></span>
                 ~
                 <span id="endSpan">종료일<input type="date" name="end"/></span>
               </div>
               <br/>
               <h4>시간대</h4>
+              <!-- 시간 추가 -->
               <div class="set-time">
                 <span id="startSpan"><input type="time" name="start"/></span>
                 ~
