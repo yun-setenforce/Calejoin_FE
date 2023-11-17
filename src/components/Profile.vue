@@ -46,6 +46,7 @@ const toggleCard2 = () => {
   <v-card v-if="showCardContents">
     <v-card-title></v-card-title>
     <v-card-text>
+      <v-sheet height="130" :class="['custom-scroll', 'overflow-y-auto']">
       <div style="font-size: 18px; padding: 2px">
         <svg-icon type="mdi" :path="mdiTagPath" style="color: grey"></svg-icon>
         [전체보기]
@@ -62,6 +63,7 @@ const toggleCard2 = () => {
         <svg-icon type="mdi" :path="mdiTagPath" style="color: grey"></svg-icon>
         약속
       </div>
+      </v-sheet>
     </v-card-text>
   </v-card>
   <div
@@ -78,6 +80,7 @@ const toggleCard2 = () => {
   <v-card v-if="showCardContents2">
     <v-card-title></v-card-title>
     <v-card-text>
+      <v-sheet :class="['custom-scroll', 'overflow-y-auto']"  height="150">
       <div style="font-size: 17px; padding: 2px">
         <svg-icon type="mdi" :path="mdiPinPath" style="color: grey"></svg-icon>
         일정내용
@@ -90,6 +93,24 @@ const toggleCard2 = () => {
         <svg-icon type="mdi" :path="mdiPinPath" style="color: grey"></svg-icon>
         일정내용
       </div>
+        <div style="font-size: 17px; padding: 2px">
+          <svg-icon type="mdi" :path="mdiPinPath" style="color: grey"></svg-icon>
+          일정내용
+        </div>
+        <div style="font-size: 17px; padding: 2px">
+          <svg-icon type="mdi" :path="mdiPinPath" style="color: grey"></svg-icon>
+          일정내용
+        </div>
+        <div style="font-size: 17px; padding: 2px">
+          <svg-icon type="mdi" :path="mdiPinPath" style="color: grey"></svg-icon>
+          일정내용
+        </div>
+        <div style="font-size: 17px; padding: 2px">
+          <svg-icon type="mdi" :path="mdiPinPath" style="color: grey"></svg-icon>
+          일정내용
+        </div>
+
+      </v-sheet>
     </v-card-text>
   </v-card>
   <div style="color: mediumblue">
@@ -102,9 +123,21 @@ const toggleCard2 = () => {
   </div>
 </template>
 
-<style>
+<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
 
+.custom-scroll::-webkit-scrollbar {
+  width: 12px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
 .custom-font {
   font-family: "Lilita One", sans-serif;
 
